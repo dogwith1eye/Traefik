@@ -10,11 +10,19 @@
             "essential": true,
             "portMappings": [
                 {
-                    "containerPort": 5000,
-                    "hostPort": 0,
-                    "protocol": "tcp"
+                    "containerPort": 80
+                },
+                {
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "containerPort": 8080
                 }
             ],
+            "dockerLabels": {
+                "traefik.frontend.rule": "Host:traefik.${AWS_ECS_CLUSTER_NAME}.${AWS_VIRTUAL_HOST}",
+                "traefik.enabled": "true",
+                "traefik.port": "8080"
+              },
             "environment": [
                 {
                     "name": "VIRTUAL_HOST",
