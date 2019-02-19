@@ -8,7 +8,7 @@ buckets=[0.1,0.3,1.2,5.0]
 [ecs]
 clusters = ["AWS_ECS_CLUSTER_NAME"]
 watch = true
-domain = "AWS_VIRTUAL_HOST"
+domain = "ENVIRONMENT.DOMAIN"
 autoDiscoverClusters = false
 refreshSeconds = 15
 exposedByDefault = true

@@ -2,7 +2,7 @@
 set -e
 
 # replace cluster definition
-sed -i "s/AWS_ECS_CLUSTER_NAME/$AWS_ECS_CLUSTER_NAME/;s/AWS_DEFAULT_REGION/$AWS_DEFAULT_REGION/;s/AWS_VIRTUAL_HOST/$AWS_VIRTUAL_HOST/" /etc/traefik/traefik.toml
+sed -i "s/AWS_ECS_CLUSTER_NAME/$AWS_ECS_CLUSTER_NAME/;s/ENVIRONMENT/$ENVIRONMENT/;s/AWS_DEFAULT_REGION/$AWS_DEFAULT_REGION/;s/DOMAIN/$DOMAIN/" /etc/traefik/traefik.toml
 
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
