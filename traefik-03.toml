@@ -9,18 +9,6 @@ defaultEntryPoints = ["http"]
 [api]
 entrypoint="dashboard"
 
-[file]
-[backends]
-  [backends.traefik]
-    [backends.traefik.servers.traefik]
-      url = "http://127.0.0.1:8080"
-
-[frontends]
-  [frontends.traefikAPI]
-    backend = "traefik"
-    [frontends.traefikAPI.routes.traefikAPI]
-      rule = "PathPrefixStrip:/traefik"
-
 [docker]
 endpoint = "unix:///var/run/docker.sock"
 domain= "docker.localhost"

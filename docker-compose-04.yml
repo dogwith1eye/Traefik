@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: containous/traefik
+    command: --configFile=/traefik.toml
+    ports:
+      - "5000:80"
+    volumes:
+      - "./traefik.toml:/traefik.toml:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:dashboard.docker.localhost"
+      - "traefik.port=8080"
+
+  # A container that exposes a simple API
+  whoami:
+    image: containous/whoami  # A container that exposes an API to show its IP address
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:whoami.docker.localhost"
